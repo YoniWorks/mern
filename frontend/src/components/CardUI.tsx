@@ -7,11 +7,22 @@ function CardUI() {
     let firstName : string = ud.firstName;
     let lastName : string = ud.lastName;
 
+    console.log(`User: ${firstName} ${lastName}`);
+    
   const [message, setMessage] = useState('');
   const [searchResults, setResults] = useState('');
   const [cardList, setCardList] = useState('');
   const [search, setSearchValue] = useState('');
   const [card, setCardNameValue] = useState('');
+
+  const app_name = 'yoniworks.net';
+  function buildPath(route: string): string {
+    if (process.env.NODE_ENV !== 'development') {
+        return 'http://' + app_name + ':5000/' + route;
+    } else {
+        return 'http://localhost:5000/' + route;
+    }
+}
 
   // Function to handle search text change
   function handleSearchTextChange(e: React.ChangeEvent<HTMLInputElement>): void {
@@ -33,8 +44,9 @@ function CardUI() {
 
       try
       {
-          const response = await fetch('http://localhost:5000/api/addcard',
-          {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
+        const response = await fetch(buildPath('api/addCard'),
+        {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
+        
 
           let txt = await response.text();
           let res = JSON.parse(txt);
@@ -65,8 +77,9 @@ function CardUI() {
 
       try
       {
-          const response = await fetch('http://localhost:5000/api/searchcards',
-          {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
+        const response = await fetch(buildPath('api/searchCards'),
+        {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
+        
 
           let txt = await response.text();
           let res = JSON.parse(txt);

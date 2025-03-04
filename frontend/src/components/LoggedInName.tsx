@@ -43,6 +43,7 @@ function LoggedInName()
     }
 
     var userId = ud?.id;
+    console.log("User ID:", userId);
     var firstName = ud?.firstName;
     var lastName = ud?.lastName;
 

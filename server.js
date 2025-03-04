@@ -38,7 +38,8 @@ var cardList = [
 ];
 
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb+srv://yoni:test@cluster0.imlas.mongodb.net/your_database_name?retryWrites=true&w=majority&appName=Cluster0';
+require('dotenv').config();  // .env 파일 로드
+const url = process.env.MONGODB_URI;
 
 const client = new MongoClient(url);
 client.connect();
