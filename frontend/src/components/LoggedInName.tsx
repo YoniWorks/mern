@@ -30,7 +30,7 @@ function LoggedInName()
     var _ud = localStorage.getItem('user_data');
     
     if (!_ud) {
-        return <div id="loggedInDiv">Not Logged In</div>; // 로그인하지 않은 경우 처리
+        return <div id="loggedInDiv">Not Logged In</div>; 
     }
 
     var ud;
@@ -38,7 +38,7 @@ function LoggedInName()
         ud = JSON.parse(_ud);
     } catch (error) {
         console.error("Error parsing user data:", error);
-        localStorage.removeItem("user_data"); // 잘못된 데이터 삭제
+        localStorage.removeItem("user_data");
         return <div id="loggedInDiv">Not Logged In</div>;
     }
 
