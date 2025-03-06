@@ -63,28 +63,79 @@ function Login() {
     }
 
 
-  return (
-    <div id="loginDiv">
-      <span id="inner-title">PLEASE LOG IN</span>
-      <br />
-      Login: <input type="text" id="loginName" placeholder="Username" 
-          onChange={handleSetLoginName} />
+//   return (
+//     <div id="loginDiv">
+//       <span id="inner-title">PLEASE LOG IN</span>
+//       <br />
+//       Login: <input type="text" id="loginName" placeholder="Username" 
+//           onChange={handleSetLoginName} />
 
-      <br />
-      Password: <input type="password" id="loginPassword" placeholder="Password" 
-          onChange={handleSetPassword} />
+//       <br />
+//       Password: <input type="password" id="loginPassword" placeholder="Password" 
+//           onChange={handleSetPassword} />
 
-      <br />
-      <input
-        type="submit"
-        id="loginButton"
-        className="buttons"
-        value="Do It"
-        onClick={doLogin}
-      />
-     <span id="loginResult">{message}</span>
+//       <br />
+//       <input
+//         type="submit"
+//         id="loginButton"
+//         className="buttons"
+//         value="Do It"
+//         onClick={doLogin}
+//       />
+//      <span id="loginResult">{message}</span>
+//     </div>
+//   );
+// }
+return (
+  <div className="flex flex-col items-center">
+
+    <div className="bg-gray-100 p-12 rounded-xl shadow-lg w-full max-w-2xl min-h-[500px] flex flex-col items-center justify-center">
+
+      <h2 className="text-5xl font-bold text-center text-gray-800 mb-15">Sign In</h2>
+
+      <form onSubmit={doLogin} className="space-y-4">
+
+        <input
+          type="text"
+          placeholder="Username"
+          className="w-full px-6 py-4 text-lg border border-gray-300 bg-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          value={loginName}
+          onChange={handleSetLoginName}
+        />
+
+
+        <input
+          type="password"
+          placeholder="Password"
+          className="w-full px-6 py-4 text-lg border border-gray-300 bg-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          value={loginPassword}
+          onChange={handleSetPassword}
+        />
+
+        <button
+          type="submit"
+          className="w-full bg-yellow-500 text-black font-bold py-4 text-xl rounded-xl shadow-lg hover:bg-yellow-600 transition"
+        >
+          LOGIN
+        </button>
+      </form>
+
+
+      {message && (
+        <p className="text-red-500 text-sm text-center mt-2">{message}</p>
+      )}
+
+
+      <p className="text-center text-base text-gray-600 mt-4">
+        Not registered?{" "}
+        <a href="/register" className="text-blue-500 hover:underline">
+          Create an account.
+        </a>
+      </p>
     </div>
-  );
-}
+  </div>
+);
 
+
+};
 export default Login;
