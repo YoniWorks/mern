@@ -42,7 +42,7 @@ function LoggedInName()
         return <div id="loggedInDiv">Not Logged In</div>;
     }
 
-    var userId = ud?.id;
+    var userId = ud?.userId;
     console.log("User ID:", userId);
     var firstName = ud?.firstName;
     var lastName = ud?.lastName;
